@@ -5,8 +5,9 @@ namespace core;
 class Leiphp{
     public static $classMap = array();
     public static function run(){
-        p('ok');
+//        p('ok');
         $route = new \core\lib\route();
+        p($route);
     }
     public static function load($class){
         //自动加载类库
