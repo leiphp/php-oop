@@ -15,6 +15,8 @@ class indexCtrl extends \core\Leiphp{
 //        $res = $model->query($sql);
 //        p($res->fetchAll());
 //        //模型类end
+        $temp = \core\lib\conf::get('CTRL','route');
+        print_r($temp);
         $title = '视图文件';
         $data = 'Hello World';
         $this->assign('title',$title);

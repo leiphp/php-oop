@@ -1,5 +1,6 @@
 <?php
 namespace core\lib;
+use core\lib\conf;
 
 class route{
     public $ctrl;
@@ -26,7 +27,7 @@ class route{
                 $this->action = $patharr[1];
                 unset($patharr[1]);
             }else{
-                $this->action = 'index';
+                $this->action = conf::get('ACTION','route');
             }
             //url多余部分转换成GET
             //id/1/str/2/test/3
@@ -42,8 +43,8 @@ class route{
 
 //            p($patharr);
         }else{
-            $this->ctrl = 'index';
-            $this->action = 'index';
+            $this->ctrl = conf::get('CTRL','route');
+            $this->action = conf::get('ACTION','route');
         }
     }
 }
