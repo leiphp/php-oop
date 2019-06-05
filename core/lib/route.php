@@ -38,34 +38,9 @@ class route{
                 }
                 $i =$i +2;
             }
-p($_GET);
+//p($_GET);
 
-
-//            $patharrLen = count($patharr);
-//            if($patharrLen>0){
-//                if($patharrLen==2){//正常的xx.com/ctrl/action
-//                    if(isset($patharr[0])){
-//                        $this->ctrl = $patharr[0];
-//                    }
-//                    if(isset($patharr[1])){
-//                        $this->action = $patharr[1];
-//                    }else{
-//                        $this->action = 'index';
-//                    }
-//                }
-//                if($patharrLen==3){//带目录xx.com/目录/ctrl/action
-//                    if(isset($patharr[1])){
-//                        $this->ctrl = $patharr[1];
-//                    }
-//                    if(isset($patharr[2])){
-//                        $this->action = $patharr[2];
-//                    }else{
-//                        $this->action = 'index';
-//                    }
-//                }
-//            }
-
-            p($patharr);
+//            p($patharr);
         }else{
             $this->ctrl = 'index';
             $this->action = 'index';

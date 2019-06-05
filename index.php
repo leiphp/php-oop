@@ -6,19 +6,20 @@
 *3.启动框架
 */
 
-define('leiphp', realpath('./'));
-define('core', leiphp.'/core');
-define('app',leiphp.'/app');
+define('LEIPHP', realpath('./'));
+define('CORE', LEIPHP.'/core');
+define('APP',LEIPHP.'/app');
+define('MODULE','app');
+define('DEBUG',true);
 
-define('debug',true);
-if(debug){
+if(DEBUG){
     ini_set('display_error','on');
 }else{
     ini_set('displey_error','off');
 }
 
-include core.'/common/function.php';
-include core.'/Leiphp.php';
+include CORE.'/common/function.php';
+include CORE.'/Leiphp.php';
 
 spl_autoload_register('\core\Leiphp::load');
 \core\Leiphp::run();
