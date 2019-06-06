@@ -1,7 +1,7 @@
 <?php
 //核心文件
 namespace core;
-
+require_once LEIPHP.'/vendor/autoload.php';
 class Leiphp{
     public static $classMap = array();
     public $assign;
@@ -48,8 +48,16 @@ class Leiphp{
     public function display($file){
         $file = APP.'/views/'.$file;
         if(is_file($file)){
-            extract($this->assign);
-            include $file;
+            \Twig_Autoloader::register();
+            $loader = new \Twig_Loader_Filesystem(APP.'/views');
+            $twig = new \Twig_Environment($loader,array(
+//                'cache'=>'/path/to/compilation_cache',
+                'cache'=>LEIPHP.'/log/twig',
+                'debug'=>DEBUG,
+                ));
+            $template = $twig->loadTemplate('index.html');
+            $template->display($this->assign?$this->assign:'');
+
         }
     }
 }
