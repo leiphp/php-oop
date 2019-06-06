@@ -6,7 +6,8 @@ class Leiphp{
     public static $classMap = array();
     public $assign;
     public static function run(){
-//        p('ok');
+        \core\lib\log::init();
+//        \core\lib\log::log($_SERVER,'server');
         $route = new \core\lib\route();
         $ctrlClass = $route->ctrl;
         $action = $route->action;
@@ -16,6 +17,7 @@ class Leiphp{
             include $ctrlfile;
             $ctrl =  new $ctrlClass;
             $ctrl->$action();
+            \core\lib\log::log('ctrl:'.$ctrlClass.'     '.'action:'.$action);
         }else{
             throw new \Exception('找不到控制器'.$ctrlClass);
         }
