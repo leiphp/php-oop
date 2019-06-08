@@ -8,12 +8,57 @@
 namespace app\ctrl;
 
 use core\lib\model;
+use app\model\guestbookModel;
 
 class indexCtrl extends \core\Leiphp{
+    //所有留言
     public function index(){
-        $data = 'Hello World';
-        $this->assign('data',$data);
+        $model = new guestbookModel();
+        $data = $model->all();
+        $this->assign('data', $data);
         $this->display('index.html');
+    }
+    //添加留言
+    public function add(){
+        $this->display('add.html');
+    }
+    //报错留言
+    public function save(){
+
+        $data['title'] = post('title');
+        $data['content'] = post('content');
+        $data['createtime'] = time();
+        $model = new guestbookModel();
+        $res = $model->addOne($data);
+        if($res){
+//            echo 'ok';
+            jump('/');
+        }else{
+            echo 'error';
+        }
+
+    }
+    //删除留言
+    public function del(){
+        $id = get('id',0,'int');
+        if($id){
+            $model = new guestbookModel();
+            $res = $model->delOne($id);
+            if($res){
+                jump('/');
+            }else{
+                exit('删除失败');
+            }
+        }else{
+            exit('参数错误');
+        }
+
+//        p($id);
+    }
+//    public function index(){
+//        $data = 'Hello World';
+//        $this->assign('data',$data);
+//        $this->display('index.html');
 //        $model = new \app\model\articleModel();
 //        $res = $model->lists();
 //        $res = $model->getOne(5);
@@ -55,7 +100,7 @@ class indexCtrl extends \core\Leiphp{
 //        );
 //        $res = $model->insert('article',$data);
 //        dump($res);
-    }
+//    }
     public function test(){
         $data = 'test';
         $this->assign('data',$data);

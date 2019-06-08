@@ -46,8 +46,8 @@ class Leiphp{
 
     }
     public function display($file){
-        $file = APP.'/views/'.$file;
-        if(is_file($file)){
+        $targetfile = APP.'/views/'.$file;
+        if(is_file($targetfile)){
             \Twig_Autoloader::register();
             $loader = new \Twig_Loader_Filesystem(APP.'/views');
             $twig = new \Twig_Environment($loader,array(
@@ -55,8 +55,8 @@ class Leiphp{
                 'cache'=>LEIPHP.'/log/twig',
                 'debug'=>DEBUG,
                 ));
-            $template = $twig->loadTemplate('index.html');
-            $template->display($this->assign?$this->assign:'');
+            $template = $twig->loadTemplate($file);
+            $template->display($this->assign?$this->assign:array());
 
         }
     }
