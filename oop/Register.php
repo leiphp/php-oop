@@ -8,6 +8,7 @@
  * Time: 23:34
  */
 namespace oop;
+
 class Register
 {
     protected static $objects;

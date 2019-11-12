@@ -1,4 +1,5 @@
 <?php
+//单例模式
 /**
  * Create by PhpStorm
  * User: 雷小天
@@ -8,7 +9,6 @@
  */
 
 namespace oop;
-
 
 class Database
 {
@@ -30,6 +30,9 @@ class Database
         return $this;
     }
     function order($order){
+        return $this;
+    }
+    function limit($limit){
         return $this;
     }
 

@@ -8,6 +8,7 @@
  * Time: 23:37
  */
 namespace oop;
+
 class Factory
 {
     //工厂方法
