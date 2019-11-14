@@ -13,6 +13,7 @@ namespace oop;
 class Database
 {
     protected $db;
+    
     private function __construct()
     {
 
